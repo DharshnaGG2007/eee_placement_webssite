@@ -1,5 +1,3 @@
-
-Run locally · MD
 # How to Run Locally
  
 ## Step 1 — Clone the Repo
