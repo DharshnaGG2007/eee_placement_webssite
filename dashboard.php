@@ -3,7 +3,7 @@ session_start();
 
 // Check if user is logged in - using mail_id instead of user_id
 if (!isset($_SESSION['mail_id']) || !isset($_SESSION['user_type'])) {
-    header('Location: index.html');
+    header('Location: index<html');
     exit();
 }
 
@@ -31,13 +31,13 @@ $currentYear = date('Y');
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        
+
         /* Navbar Styles */
         .navbar {
             background-color: #2c3e50;
@@ -146,7 +146,7 @@ $currentYear = date('Y');
         .mobile-menu-btn:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         /* Mobile Menu Overlay */
         .mobile-menu {
             display: none;
@@ -384,7 +384,7 @@ $currentYear = date('Y');
             margin: 30px auto;
             padding: 0 20px;
         }
-        
+
         .intro-container {
             background-color: white;
             border-radius: 8px;
@@ -416,18 +416,18 @@ $currentYear = date('Y');
             margin-bottom: 30px;
             text-align: center;
         }
-        
+
         .dashboard-header h1 {
             color: #2c3e50;
             font-size: 32px;
             margin-bottom: 10px;
         }
-        
+
         .dashboard-header p {
             color: #7f8c8d;
             font-size: 18px;
         }
-        
+
         /* Tree Structure Styles */
         .tree-container {
             background-color: white;
@@ -436,7 +436,7 @@ $currentYear = date('Y');
             padding: 25px;
             margin-bottom: 30px;
         }
-        
+
         .tree-title {
             font-size: 24px;
             color: #2c3e50;
@@ -444,18 +444,18 @@ $currentYear = date('Y');
             padding-bottom: 10px;
             border-bottom: 2px solid #ecf0f1;
         }
-        
+
         .tree {
             list-style-type: none;
             padding-left: 0;
         }
-        
+
         .tree li {
             margin: 12px 0;
             position: relative;
             padding-left: 30px;
         }
-        
+
         .tree li .toggle {
             position: absolute;
             left: 0;
@@ -470,7 +470,7 @@ $currentYear = date('Y');
             font-size: 14px;
             user-select: none;
         }
-        
+
         .tree li .content {
             font-weight: 600;
             color: #2c3e50;
@@ -479,44 +479,44 @@ $currentYear = date('Y');
             border-radius: 4px;
             transition: all 0.3s;
         }
-        
+
         .tree li .content:hover {
             background-color: #f8f9fa;
         }
-        
+
         .tree ul {
             list-style-type: none;
             padding-left: 40px;
             display: none;
             margin-top: 8px;
         }
-        
+
         .tree li.active > ul {
             display: block;
         }
-        
+
         .tree li.active > .toggle {
             background: #2980b9;
         }
-        
+
         .tree ul li {
             font-size: 15px;
         }
-        
+
         .tree ul li .content {
             font-weight: 500;
             color: #34495e;
         }
-        
+
         .tree ul ul li {
             font-size: 14px;
         }
-        
+
         .tree ul ul li .content {
             font-weight: 400;
             color: #7f8c8d;
         }
-        
+
         /* Footer Styles */
         footer {
             background-color: #2c3e50;
@@ -715,11 +715,13 @@ $currentYear = date('Y');
             height: 100%;
             border: none;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .nav-links {
-                display: none;
+                display: flex;
+    flex-wrap: wrap;
+    gap: 10px;;
             }
             .user-info {
                 display: none;
@@ -736,15 +738,15 @@ $currentYear = date('Y');
             .tree-container {
                 padding: 15px;
             }
-            
+
             .tree ul {
                 padding-left: 25px;
             }
-            
+
             .dashboard-header h1 {
                 font-size: 28px;
             }
-            
+
             .container {
                 padding: 0 15px;
             }
@@ -799,51 +801,69 @@ $currentYear = date('Y');
             .navbar {
                 padding: 12px 15px;
             }
-            
+
             .logo {
                 height: 40px;
             }
-            
+
             .nav-title {
                 font-size: 18px;
             }
-            
+
             .tree-container {
                 padding: 12px;
             }
-            
+
             .mobile-menu-content {
                 width: 280px;
             }
         }
+        .creator-footer {
+    text-align: center;
+    padding: 18px 10px;
+    margin-top: 1px;
+    color: #34495e;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    background: #f8f9fa;
+}
+
+.creator-footer p {
+    margin: 0;
+}
+
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Itechlogo.png/738px-Itechlogo.png" alt="PSG iTech Logo" class="logo">
+            <img src="images/itechlogo.png" alt="PSG iTech Logo" class="logo">
             <span class="nav-title">EEE Department</span>
         </div>
-        
+
         <div class="nav-content">
             <div class="nav-links">
                 <a href="dashboard.php" style="background: #34495e;"><i class="fas fa-home"></i> HOME</a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i> PLACED EXPERIENCE</a>
-                <a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
+                <a href="magazine.php">
+                   <i class="fas fa-book-open">
+                    </i> MAGAZINE
+</a>
+               <a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i> Admin Panel</a>
                 <?php endif; ?>
                 <a href="logout.php" style="background: #009dffff;"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
             </div>
-            
+
             <div class="user-info">
                 <div class="user-avatar"><?php echo $firstLetter; ?></div>
                 <span><?php echo htmlspecialchars($username); ?></span>
                 <small style="font-size: 11px; opacity: 0.8;">(<?php echo ucfirst($currentUserType); ?>)</small>
             </div>
         </div>
-        
+
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
@@ -863,7 +883,7 @@ $currentYear = date('Y');
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div class="mobile-nav-links">
                 <a href="dashboard.php">
                     <i class="fas fa-home"></i>
@@ -873,17 +893,19 @@ $currentYear = date('Y');
                     <i class="fas fa-book"></i>
                     <span>PLACED EXPERIENCE</span>
                 </a>
-                <a href="chatbot.php">
+
+           <a href="chatbot.php">
                     <i class="fas fa-pencil-alt"></i>
                     <span>PREP WITH AI</span>
                 </a>
+
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php">
                         <i class="fas fa-user-shield"></i>
                         <span>Admin Panel</span>
                     </a>
                 <?php endif; ?>
-                
+
                 <!-- Logout as a regular nav link -->
                 <a href="logout.php" class="mobile-logout-link">
                     <i class="fas fa-sign-out-alt"></i>
@@ -892,7 +914,7 @@ $currentYear = date('Y');
             </div>
 
             <!-- User Info at Bottom -->
-            
+
         </div>
     </div>
 
@@ -901,7 +923,7 @@ $currentYear = date('Y');
         <!-- Tree Structure -->
          <div class="intro-container">
             <h2 class="intro-title">Introduction</h2>
-            <div class="intro-content"><p>Welcome to the EEE Department's Placement Preparation website! This platform is designed to help you prepare for your placement journey. Whether you're looking for core technical knowledge, software skills, or aptitude training, you'll find a wealth of resources here. Navigate through the preparation topics, explore study materials, Explore the experiences of placed students and leverage AI-powered tools to enhance your placement preparation. In the 'Placement Experience' section, gain insights from real-world experiences shared by your seniors, offering valuable perspectives on company-specific processes and interview strategies. Then, head over to the 'Prep with AI' section, where you can utilize cutting-edge AI tools designed to simulate interview scenarios, assess your aptitude, and provide personalized guidance. These features are designed to give you a competitive edge as you prepare for your placement journey. Good Luck for your placements!</p>
+           <div class="intro-content"><p>Welcome to the EEE Department's Placement Preparation website! This platform is designed to help you prepare for your placement journey. Whether you're looking for core technical knowledge, software skills, or aptitude training, you'll find a wealth of resources here. Navigate through the preparation topics, explore study materials, Explore the experiences of placed students and leverage AI-powered tools to enhance your placement preparation. In the 'Placement Experience' section, gain insights from real-world experiences shared by your seniors, offering valuable perspectives on company-specific processes and interview strategies. Then, head over to the 'Prep with AI' section, where you can utilize cutting-edge AI tools designed to simulate interview scenarios, assess your aptitude, and provide personalized guidance. These features are designed to give you a competitive edge as you prepare for your placement journey. Good Luck for your placements!</p>
 
             </div>
         </div>
@@ -969,7 +991,7 @@ $currentYear = date('Y');
                         </li>
                     </ul>
                 </li>
-                
+
                 <!-- SOFTWARE -->
                 <li>
                     <span class="toggle">+</span>
@@ -988,7 +1010,7 @@ $currentYear = date('Y');
                                 <li><span class="toggle" style="visibility: hidden;"></span><span class="content">COMPUTER ARCHITECTURE AND ORGANIZATION</span></li>
                             </ul>
                         </li>
-                        
+
                         <!-- PROGRAMMING -->
                         <li>
                             <span class="toggle">+</span>
@@ -1003,7 +1025,7 @@ $currentYear = date('Y');
                         </li>
                     </ul>
                 </li>
-                
+
                 <!-- APTITUDE -->
                 <li>
                     <span class="toggle">+</span>
@@ -1083,7 +1105,7 @@ $currentYear = date('Y');
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <!-- LOGICAL -->
                         <li>
                             <span class="toggle">+</span>
@@ -1112,7 +1134,7 @@ $currentYear = date('Y');
                                 <li><span class="toggle" style="visibility: hidden;"></span><span class="content">IDIOMS AND PHRASES</span></li>
                             </ul>
                         </li>
-                        
+
                         <li>
                             <span class="toggle">+</span>
                             <span class="content">MISCELLANEOUS</span>
@@ -1123,7 +1145,7 @@ $currentYear = date('Y');
 
                     </ul>
                 </li>
-                
+
                 <!-- INTERVIEW PREPARATION -->
                 <li>
                     <span class="toggle">+</span>
@@ -1160,7 +1182,7 @@ $currentYear = date('Y');
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM loaded - initializing mobile menu');
-        
+
         // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -1212,21 +1234,21 @@ $currentYear = date('Y');
         // Mobile menu link handling - SIMPLE AND RELIABLE
         const mobileMenuLinks = document.querySelectorAll('.mobile-nav-links a');
         console.log('Found mobile menu links:', mobileMenuLinks.length);
-        
+
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 console.log('Mobile menu link clicked:', this.href);
-                
+
                 // Close the menu first
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
-                
+
                 // For logout, let it proceed normally
                 if (this.href.includes('logout.php')) {
                     console.log('Logout link - proceeding normally');
                     return true;
                 }
-                
+
                 // For other links, let the browser handle navigation normally
                 console.log('Navigation link - proceeding normally');
             });
@@ -1242,12 +1264,12 @@ $currentYear = date('Y');
 
             // Tree functionality
             const treeItems = document.querySelectorAll('#preparationTree li');
-            
+
             treeItems.forEach(item => {
                 const toggle = item.querySelector(':scope > .toggle');
                 const content = item.querySelector(':scope > .content');
                 const childList = item.querySelector(':scope > ul');
-                
+
                 // Only add toggle functionality if there's a nested list with content
                 if (childList && childList.children.length > 0) {
                     toggle.addEventListener('click', function(e) {
@@ -1255,7 +1277,7 @@ $currentYear = date('Y');
                         item.classList.toggle('active');
                         toggle.textContent = item.classList.contains('active') ? '-' : '+';
                     });
-                    
+
                     content.addEventListener('click', function(e) {
                         e.stopPropagation();
                         item.classList.toggle('active');
@@ -1264,7 +1286,7 @@ $currentYear = date('Y');
                 } else {
                     // Remove toggle indicator for items without children
                     toggle.style.visibility = 'hidden';
-                    
+
                     // Add click event to open modal for final topics
                     content.style.cursor = 'pointer';
                     content.addEventListener('click', function(e) {
@@ -1274,14 +1296,14 @@ $currentYear = date('Y');
                     });
                 }
             });
-            
+
             // Auto-expand specific sections by default
             const firstLevelItems = document.querySelectorAll('#preparationTree > li');
             firstLevelItems.forEach(item => {
                 const toggle = item.querySelector(':scope > .toggle');
                 const childList = item.querySelector(':scope > ul');
                 const content = item.querySelector(':scope > .content');
-                
+
                 if (childList && content) {
                     const sectionName = content.textContent.trim();
                     // Only open CORE, SOFTWARE, and APTITUDE sections
@@ -1299,12 +1321,12 @@ $currentYear = date('Y');
             const modal = document.getElementById('topicModal');
             const modalTitle = document.getElementById('modalTopicTitle');
             const modalBody = document.getElementById('modalTopicBody');
-            
+
             modalTitle.textContent = topicName;
-            
+
             // Load topic content
             loadTopicContent(topicName, modalBody);
-            
+
             // Show modal
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -1319,7 +1341,7 @@ $currentYear = date('Y');
         function loadTopicContent(topicName, container) {
             // You can fetch content from a PHP file or define it here
             // For now, we'll use a template structure
-            
+
             const content = getTopicTemplate(topicName);
             container.innerHTML = content;
         }
@@ -1446,8 +1468,8 @@ $currentYear = date('Y');
                     additionalResources: [
                         {title: 'ETAB Software', link: 'https://drive.google.com/drive/folders/1JUGw4M1hQU5b9BxzZokTT3y6eQ2oI8wT', description: '' },
                         {title: 'Electrical Power System', link: 'https://www.electrical4u.com/power-system/', description: 'Electrical4U' },
-                        {title: 'Power System Interview Questions', link: 'https://forumelectrical.com/power-system-interview-questions/', description: 'ForumElectrical.Com'},  
-                        {title: 'Interview Preparation', link: 'https://www.withoutbook.com/InterviewQuestionList.php?tech=122&dl=Top&s=Power%20System%20Interview%20Questions%20and%20Answers', description: 'Without Book'}  
+                        {title: 'Power System Interview Questions', link: 'https://forumelectrical.com/power-system-interview-questions/', description: 'ForumElectrical.Com'},
+                        {title: 'Interview Preparation', link: 'https://www.withoutbook.com/InterviewQuestionList.php?tech=122&dl=Top&s=Power%20System%20Interview%20Questions%20and%20Answers', description: 'Without Book'}
                     ]
                 },
                 'POWER ELECTRONICS':{
@@ -1550,7 +1572,7 @@ $currentYear = date('Y');
                 'ELECTRONIC DEVICES AND CIRCUITS': {
                     overview: 'Electron Devices and Circuits is a fundamental subject in electrical engineering that focuses on the study of semiconductor devices and their applications in electronic circuits. It covers topics such as diodes, transistors, and their configurations, as well as various electronic circuits used in amplifiers, oscillators, and switching applications.',
                     resources: [
-                        { title: 'Electronic Devices and Circuits - Robert L. Boylestad Louis Nashelsky', link: 'https://drive.google.com/drive/folders/1VazJJeWaj-mO3tK_yZKG5AxN4RfXQObt'}                   
+                        { title: 'Electronic Devices and Circuits - Robert L. Boylestad Louis Nashelsky', link: 'https://drive.google.com/drive/folders/1VazJJeWaj-mO3tK_yZKG5AxN4RfXQObt'}
                     ],
                     keyTopics: [
                         'Unacademy Lectures and ALL ABOUT ELECTRONICS are recommended to use a primary source for learning analog electronics and use other resources as your supplement to aid your understanding.',
@@ -1912,7 +1934,7 @@ $currentYear = date('Y');
                         { title: 'HR Interview Questions - PrepInsta', link: 'https://prepinsta.com/cgi/interview-questions/hr-interview-questions/', description: '' }
                     ]
                 }
-                
+
 
                 // Add other topics here...
             };
@@ -1989,7 +2011,7 @@ $currentYear = date('Y');
                     <div class="topic-section">
                         <h3><i class="fas fa-info-circle"></i> Overview</h3>
                         <p class="topic-description">
-                            This section covers important concepts and resources for <strong>${topicName}</strong>. 
+                            This section covers important concepts and resources for <strong>${topicName}</strong>.
                             Below you'll find study materials, video tutorials, and practice resources to help you master this topic.
                         </p>
                     </div>
@@ -2091,5 +2113,10 @@ $currentYear = date('Y');
             }
         }
     </script>
+
+<footer class="creator-footer">
+    <p>Created by <strong>Ashaf M</strong> and <strong>Dharshna G G</strong></p>
+</footer>
+
 </body>
 </html>

@@ -66,14 +66,14 @@ try {
     }
 
 } catch (PDOException $e) {
-    error_log("Database error in get_experience.php: " . $e->getMessage());
+    error_log("Database error in get_experienced.php: " . $e->getMessage());
     echo json_encode([
         'success' => false,
         'message' => 'Database connection failed',
         'experience' => null
     ]);
 } catch (Exception $e) {
-    error_log("General error in get_experience.php: " . $e->getMessage());
+    error_log("General error in get_experienced.php: " . $e->getMessage());
     echo json_encode([
         'success' => false,
         'message' => $e->getMessage(),

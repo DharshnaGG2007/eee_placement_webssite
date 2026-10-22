@@ -40,7 +40,7 @@ class AIChatSystem {
 
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
+
         if (curl_errno($ch)) {
             $error = curl_error($ch);
             curl_close($ch);
@@ -91,10 +91,10 @@ class AIChatSystem {
 $aiSystem = new AIChatSystem();
 
 // Handle AJAX requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && 
-    (strpos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') !== false || 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
+    (strpos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') !== false ||
      isset($_SERVER['HTTP_CONTENT_TYPE']) && strpos($_SERVER['HTTP_CONTENT_TYPE'], 'application/json') !== false)) {
-    
+
     header('Content-Type: application/json');
     $input = json_decode(file_get_contents('php://input'), true);
 
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
 // Handle GET requests with query parameters
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
     header('Content-Type: application/json');
-    
+
     switch ($_GET['action']) {
         case 'companies':
             echo json_encode($aiSystem->getCompanies());
@@ -155,13 +155,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        
+
         /* Navbar Styles */
         .navbar {
             background-color: #2c3e50;
@@ -270,7 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         .mobile-menu-btn:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         /* Mobile Menu Overlay */
         .mobile-menu {
             display: none;
@@ -383,18 +383,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             margin: 30px auto;
             padding: 0 20px;
         }
-        
+
         .page-header {
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         .page-header h1 {
             color: #2c3e50;
             font-size: 32px;
             margin-bottom: 10px;
         }
-        
+
         .ai-badge {
             background: #27ae60;
             color: white;
@@ -404,14 +404,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             display: inline-block;
             margin-top: 10px;
         }
-        
+
         .app-container {
             display: grid;
             grid-template-columns: 320px 1fr;
             gap: 25px;
             min-height: 70vh;
         }
-        
+
         .sidebar {
             background: white;
             padding: 25px;
@@ -419,7 +419,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             height: fit-content;
         }
-        
+
         .sidebar h3 {
             color: #2c3e50;
             margin-bottom: 20px;
@@ -427,7 +427,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             border-bottom: 2px solid #ecf0f1;
             padding-bottom: 10px;
         }
-        
+
         .main-content {
             background: white;
             padding: 25px;
@@ -436,13 +436,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             display: flex;
             flex-direction: column;
         }
-        
+
         .chat-container {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -453,7 +453,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             max-height: 550px;
             border: 1px solid #ecf0f1;
         }
-        
+
         .message {
             margin-bottom: 20px;
             padding: 15px 20px;
@@ -462,19 +462,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             animation: fadeIn 0.3s ease;
             white-space: pre-wrap;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .message.user {
             background: #3498db;
             color: white;
             margin-left: auto;
             border-bottom-right-radius: 5px;
         }
-        
+
         .message.assistant {
             background: white;
             border: 2px solid #ecf0f1;
@@ -482,12 +482,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             border-left: 4px solid #3498db;
         }
-        
+
         .chat-input {
             display: flex;
             gap: 12px;
         }
-        
+
         .chat-input input {
             flex: 1;
             padding: 15px 20px;
@@ -497,11 +497,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             outline: none;
             transition: border-color 0.3s;
         }
-        
+
         .chat-input input:focus {
             border-color: #3498db;
         }
-        
+
         .chat-input button {
             padding: 15px 30px;
             background: #3498db;
@@ -512,7 +512,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             font-weight: 600;
             transition: background 0.3s;
         }
-        
+
         .chat-input button:hover:not(:disabled) {
             background: #2980b9;
         }
@@ -521,13 +521,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             background: #bdc3c7;
             cursor: not-allowed;
         }
-        
+
         .examples-grid {
             display: grid;
             gap: 10px;
             margin: 20px 0;
         }
-        
+
         .example-btn {
             padding: 12px 15px;
             background: #f8f9fa;
@@ -540,13 +540,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             color: #2c3e50;
             font-size: 14px;
         }
-        
+
         .example-btn:hover {
             background: #3498db;
             color: white;
             transform: translateX(5px);
         }
-        
+
         .ai-thinking {
             display: inline-flex;
             align-items: center;
@@ -554,12 +554,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             color: #3498db;
             font-weight: 600;
         }
-        
+
         .ai-dots {
             display: inline-flex;
             gap: 3px;
         }
-        
+
         .ai-dots span {
             width: 6px;
             height: 6px;
@@ -567,15 +567,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             background: #3498db;
             animation: bounce 1.4s ease-in-out infinite both;
         }
-        
+
         .ai-dots span:nth-child(1) { animation-delay: -0.32s; }
         .ai-dots span:nth-child(2) { animation-delay: -0.16s; }
-        
+
         @keyframes bounce {
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1); }
         }
-        
+
         .system-status {
             margin-top: 20px;
             padding: 15px;
@@ -583,12 +583,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             border-radius: 8px;
             border-left: 4px solid #27ae60;
         }
-        
+
         .system-status h4 {
             color: #2c3e50;
             margin-bottom: 10px;
         }
-        
+
         .tab-navigation {
             display: flex;
             margin-bottom: 20px;
@@ -596,7 +596,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             border-radius: 8px;
             padding: 5px;
         }
-        
+
         .tab-btn {
             flex: 1;
             padding: 12px;
@@ -608,17 +608,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             font-weight: 600;
             color: #7f8c8d;
         }
-        
+
         .tab-btn.active {
             background: #3498db;
             color: white;
         }
-        
+
         .tab-content {
             display: none;
             flex: 1;
         }
-        
+
         .tab-content.active {
             display: flex;
             flex-direction: column;
@@ -627,7 +627,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
 
         .status-success { color: #27ae60; font-weight: bold; }
         .status-error { color: #e74c3c; font-weight: bold; }
-        
+
         footer {
             background-color: #2c3e50;
             color: white;
@@ -635,7 +635,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             padding: 20px;
             margin-top: 40px;
         }
-        
+
         @media (max-width: 1200px) {
             .nav-links, .user-info {
                 display: none;
@@ -644,7 +644,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                 display: block;
             }
         }
-        
+
         @media (max-width: 1024px) {
             .app-container {
                 grid-template-columns: 1fr;
@@ -653,12 +653,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             .sidebar {
                 order: 1; /* Show sidebar first on mobile */
             }
-            
+
             .main-content {
                 order: 2; /* Show main content after sidebar */
             }
         }
-        
+
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 26px;
@@ -685,17 +685,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             .chat-messages {
                 max-height: 400px;
             }
-            
+
             .message {
                 max-width: 90%;
                 font-size: 14px;
                 padding: 12px 15px;
             }
-            
+
             .chat-input {
                 flex-direction: column;
             }
-            
+
             .chat-input button {
                 width: 100%;
             }
@@ -705,28 +705,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
 <body>
     <nav class="navbar">
         <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Itechlogo.png/738px-Itechlogo.png" alt="PSG iTech Logo" class="logo">
-            <span class="nav-title">EEE Department</span>
+
+<img src="images/itechlogo.png" alt="EEE Department Logo" class="logo">
+ <span class="nav-title">EEE Department</span>
         </div>
-        
-        <div class="nav-content">
+         <div class="nav-content">
             <div class="nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i> HOME</a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i> PLACED EXPERIENCE</a>
+                <a href="magazine.php"><i class="fas fa-book-open"></i> MAGAZINE</a>
                 <a href="chatbot.php" style="background: #34495e;"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i> Admin Panel</a>
                 <?php endif; ?>
                 <a href="logout.php" style="background: #009dffff;"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
             </div>
-            
+
             <div class="user-info">
                 <div class="user-avatar"><?php echo $firstLetter; ?></div>
                 <span><?php echo htmlspecialchars($username); ?></span>
                 <small style="font-size: 11px; opacity: 0.8;">(<?php echo ucfirst($currentUserType); ?>)</small>
             </div>
         </div>
-        
+
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
@@ -746,10 +747,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div class="mobile-nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i><span>HOME</span></a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i><span>PLACED EXPERIENCE</span></a>
+
                 <a href="chatbot.php"><i class="fas fa-pencil-alt"></i><span>PREP WITH AI</span></a>
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i><span>Admin Panel</span></a>
@@ -763,7 +765,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         <div class="page-header">
             <h1>🎓 EEE Placement AI Assistant</h1>
         </div>
-        
+
         <div class="app-container">
             <div class="sidebar">
                 <div id="interview-prep-sidebar">
@@ -788,13 +790,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                     </button>
                 </div>
             </div>
-            
+
             <div class="main-content">
                 <div class="chat-container">
                     <div class="chat-messages" id="chat-messages">
                         <div class="message assistant">Welcome! I'm your AI-powered placement assistant. I can analyze placement data, provide study guidance, and interview preparation. What would you like to know?</div>
                     </div>
-                    
+
                     <div class="chat-input">
                         <input type="text" id="message-input" placeholder="Ask anything about placements..." onkeypress="handleKeyPress(event)">
                         <button onclick="sendMessage()" id="send-btn">
@@ -811,21 +813,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         const input = document.getElementById('message-input');
         const message = input.value.trim();
         const sendBtn = document.getElementById('send-btn');
-        
+
         if (!message) return;
-        
+
         addMessage(message, 'user');
         input.value = '';
-        
+
         sendBtn.disabled = true;
         sendBtn.innerHTML = '<span class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span></span>';
-        
+
         const thinkingId = addMessage(
-            '<div class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span> AI is analyzing...</div>', 
-            'assistant', 
+            '<div class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span> AI is analyzing...</div>',
+            'assistant',
             true
         );
-        
+
         // FIXED: Call chatbot.php instead of /api/chat
         fetch('chatbot.php', {
             method: 'POST',
@@ -836,10 +838,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         .then(data => {
             sendBtn.disabled = false;
             sendBtn.innerHTML = 'Send';
-            
+
             const thinkingElem = document.getElementById(thinkingId);
             if (thinkingElem) thinkingElem.remove();
-            
+
             if (data.success) {
                 addMessage(data.response, 'assistant');
             } else {
@@ -849,56 +851,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         .catch(error => {
             sendBtn.disabled = false;
             sendBtn.innerHTML = 'Send';
-            
+
             const thinkingElem = document.getElementById(thinkingId);
             if (thinkingElem) thinkingElem.remove();
-            
+
             addMessage('❌ Network error: ' + error.message, 'assistant');
         });
     }
-    
+
     function sendExample(message) {
         document.getElementById('message-input').value = message;
         sendMessage();
     }
-    
+
     function addMessage(content, role, isTemp = false) {
         const messagesContainer = document.getElementById('chat-messages');
         const messageId = 'msg-' + Date.now();
-        
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${role}`;
         messageDiv.id = isTemp ? messageId : '';
-        
+
         const prefix = role === 'user' ? '👤 You:' : '🤖 AI:';
         messageDiv.innerHTML = `<strong>${prefix}</strong> ${content}`;
-        
+
         messagesContainer.appendChild(messageDiv);
-        
+
         // REMOVED: Automatic scrolling to bottom
         // messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        
+
         return messageId;
     }
-    
+
     function handleKeyPress(event) {
         if (event.key === 'Enter') sendMessage();
     }
-    
+
     function testSystem() {
         const dbStatus = document.getElementById('db-status');
         const aiStatus = document.getElementById('ai-status');
-        
+
         dbStatus.innerHTML = '<div class="ai-thinking">Testing...</div>';
         aiStatus.innerHTML = '<div class="ai-thinking">Testing...</div>';
-        
+
         // FIXED: Call chatbot.php?action=test
         fetch('chatbot.php?action=test')
         .then(response => response.json())
         .then(data => {
             dbStatus.innerHTML = data.db_status || '❌ No status';
             dbStatus.className = (data.db_status && data.db_status.startsWith('✅')) ? 'status-success' : 'status-error';
-            
+
             aiStatus.innerHTML = data.ai_status || '❌ No status';
             aiStatus.className = (data.ai_status && data.ai_status.startsWith('✅')) ? 'status-success' : 'status-error';
         })
@@ -909,11 +911,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             aiStatus.className = 'status-error';
         });
     }
-    
+
     function loadCompanies() {
         const companyList = document.getElementById('company-list');
         companyList.innerHTML = '<div class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span> Loading...</div>';
-        
+
         // FIXED: Call chatbot.php?action=companies
         fetch('chatbot.php?action=companies')
         .then(response => response.json())
@@ -932,7 +934,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             companyList.innerHTML = '<div class="status-error">❌ Failed to load: ' + error.message + '</div>';
         });
     }
-    
+
     function getInterviewPrep(companyName) {
         const userMessage = `Tell me about interview preparation for ${companyName}`;
         addMessage(userMessage, 'user');
@@ -944,13 +946,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                 mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
-        
+
         const thinkingId = addMessage(
-            `<div class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span> Generating guide for ${companyName}...</div>`, 
-            'assistant', 
+            `<div class="ai-thinking"><span class="ai-dots"><span></span><span></span><span></span></span> Generating guide for ${companyName}...</div>`,
+            'assistant',
             true
         );
-        
+
         fetch('chatbot.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -973,7 +975,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
             addMessage('❌ Network error: ' + error.message, 'assistant');
         });
     }
-    
+
     // Test system on load
     document.addEventListener('DOMContentLoaded', function() {
         // Mobile menu functionality

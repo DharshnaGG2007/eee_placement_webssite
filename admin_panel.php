@@ -612,7 +612,9 @@ $currentYear = date('Y');
             <div class="nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i> HOME</a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i> PLACED EXPERIENCE</a>
-                <a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
+                <!-- Temporarily hidden
+<a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
+-->
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php" style="background: #34495e;"><i class="fas fa-user-shield"></i> Admin Panel</a>
                 <?php endif; ?>
@@ -650,7 +652,9 @@ $currentYear = date('Y');
             <div class="mobile-nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i><span>HOME</span></a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i><span>PLACED EXPERIENCE</span></a>
-                <a href="chatbot.php"><i class="fas fa-pencil-alt"></i><span>PREP WITH AI</span></a>
+                <!--
+<a href="chatbot.php"><i class="fas fa-pencil-alt"></i><span>PREP WITH AI</span></a>
+-->
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i><span>Admin Panel</span></a>
                 <?php endif; ?>

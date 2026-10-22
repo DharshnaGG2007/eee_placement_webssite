@@ -55,9 +55,12 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
         }
 
         .logo {
-            height: 50px;
-            margin-right: 15px;
-        }
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    object-fit: contain;
+    display: block;
+}
 
         .nav-content {
             display: flex;
@@ -639,8 +642,8 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             color: #2c3e50;
         }
 
-        .form-group input, 
-        .form-group select, 
+        .form-group input,
+        .form-group select,
         .form-group textarea {
             padding: 10px 12px;
             border: 2px solid #ecf0f1;
@@ -650,8 +653,8 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus, 
-        .form-group select:focus, 
+        .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: #3498db;
             outline: none;
@@ -832,11 +835,11 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             .nav-links {
                 display: none;
             }
-            
+
             .user-info {
                 display: none;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
@@ -846,15 +849,15 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             .navbar {
                 padding: 15px 20px;
             }
-            
+
             .container {
                 padding: 0 15px;
             }
-            
+
             .batch-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -931,33 +934,55 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                 font-size: 14px;
             }
         }
+
+.creator-footer {
+    text-align: center;
+    padding: 18px 10px;
+    margin-top: 30px;
+    color: #34495e;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    background: #f8f9fa;
+}
+
+.creator-footer p {
+    margin: 0;
+}
+
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Itechlogo.png/738px-Itechlogo.png" alt="PSG iTech Logo" class="logo">
+            <img src="images/itechlogo.png" alt="PSG iTech Logo" class="logo">
             <span class="nav-title">EEE Department</span>
         </div>
-        
-        <div class="nav-content">
-            <div class="nav-links">
+
+        <div class="nav-content"  >          <div class="nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i> HOME</a>
+
                 <a href="placement_experience.php" style="background: #34495e;"><i class="fas fa-book"></i> PLACED EXPERIENCE</a>
-                <a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
+                <a href="magazine.php">
+    <i class="fas fa-book-open"></i> MAGAZINE
+</a>
+
+               <a href="chatbot.php"><i class="fas fa-pencil-alt"></i> PREP WITH AI</a>
+
+
+
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i> Admin Panel</a>
                 <?php endif; ?>
                 <a href="logout.php" style="background: #009dff;"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
             </div>
-            
+
             <div class="user-info">
                 <div class="user-avatar"><?php echo $firstLetter; ?></div>
                 <span><?php echo htmlspecialchars($username); ?></span>
                 <small style="font-size: 11px; opacity: 0.8;">(<?php echo ucfirst($currentUserType); ?>)</small>
             </div>
         </div>
-        
+
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
@@ -977,11 +1002,17 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div class="mobile-nav-links">
                 <a href="dashboard.php"><i class="fas fa-home"></i><span>HOME</span></a>
                 <a href="placement_experience.php"><i class="fas fa-book"></i><span>PLACED EXPERIENCE</span></a>
-                <a href="chatbot.php"><i class="fas fa-pencil-alt"></i><span>PREP WITH AI</span></a>
+
+<a href="magazine.php">
+    <i class="fas fa-newspaper"></i>
+    <span>MAGAZINE </span>
+</a>
+```
+             <a href="chatbot.php"><i class="fas fa-pencil-alt"></i><span>PREP WITH AI</span></a>
                 <?php if (in_array($currentUserType, ['admin', 'faculty'])): ?>
                     <a href="admin_panel.php"><i class="fas fa-user-shield"></i><span>Admin Panel</span></a>
                 <?php endif; ?>
@@ -1055,11 +1086,11 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
     <div id="addExperienceModal" class="add-experience-modal">
         <div class="add-experience-modal-content">
             <span class="add-experience-modal-close" onclick="closeAddExperienceModal()">&times;</span>
-            
+
             <div class="edit-mode-header" id="editModeHeader" style="display: none;">
                 <i class="fas fa-edit"></i> Editing Experience - You can update your existing placement details
             </div>
-            
+
             <div class="form-header">
                 <h2 id="formTitle">Add Your Placement Experience</h2>
                 <p>Share your placement journey to help future students</p>
@@ -1155,7 +1186,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
 
                 <div class="rounds-section">
                     <h3><i class="fas fa-clipboard-list"></i> Interview Rounds Experience (Leave empty if not applicable)</h3>
-                    
+
                     <div class="round-group">
                         <div class="round-label">
                             <i class="fas fa-circle"></i>
@@ -1285,10 +1316,10 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
         function loadCompaniesForDropdown() {
             const companySelect = document.getElementById('companyName');
             companySelect.innerHTML = '<option value="">Loading companies...</option>';
-            
+
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000);
-            
+
             fetch('get_all_companies.php', { signal: controller.signal })
             .then(response => {
                 clearTimeout(timeoutId);
@@ -1298,7 +1329,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             .then(data => {
                 companies = data.companies || [];
                 companySelect.innerHTML = '<option value="">Select Company</option>';
-                
+
                 if (companies.length === 0) {
                     const defaultCompanies = ['TCS', 'Infosys', 'Wipro', 'Accenture', 'Microsoft', 'Google', 'Amazon'];
                     defaultCompanies.forEach(companyName => {
@@ -1345,16 +1376,16 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             const counter = document.getElementById(roundId + 'Count');
             const maxLength = 65535;
             const currentLength = textArea.value.length;
-            
+
             counter.textContent = `${currentLength} / ${maxLength} characters`;
             counter.classList.remove('warning', 'danger');
-            
+
             if (currentLength > maxLength * 0.9) {
                 counter.classList.add('danger');
             } else if (currentLength > maxLength * 0.8) {
                 counter.classList.add('warning');
             }
-            
+
             if (currentLength >= maxLength) {
                 textArea.value = textArea.value.substring(0, maxLength);
                 counter.textContent = `${maxLength} / ${maxLength} characters (Limit reached!)`;
@@ -1387,7 +1418,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
         function toggleNewCompanyInput() {
             const newCompanyInput = document.getElementById('newCompanyInput');
             const companySelect = document.getElementById('companyName');
-            
+
             if (newCompanyInput.classList.contains('active')) {
                 newCompanyInput.classList.remove('active');
                 companySelect.disabled = false;
@@ -1402,15 +1433,15 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
 
         function handleFormSubmit(e) {
             e.preventDefault();
-            
+
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.innerHTML;
-            
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            
+
             const formData = new FormData();
-            
+
             const registerNo = document.getElementById('registerNo').value.trim();
             const studentName = document.getElementById('studentName').value.trim().toUpperCase();
             const phoneNo = document.getElementById('phoneNo').value.trim();
@@ -1418,7 +1449,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             const yearOfGraduation = document.getElementById('yearOfGraduation').value;
             const package = document.getElementById('package').value;
             const companyType = document.getElementById('companyType').value;
-            
+
             let companyName = '';
             const newCompanyInput = document.getElementById('newCompanyInput');
             if (newCompanyInput.classList.contains('active')) {
@@ -1426,7 +1457,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             } else {
                 companyName = document.getElementById('companyName').value;
             }
-            
+
             const rounds = {};
             for (let i = 1; i <= 6; i++) {
                 const roundValue = document.getElementById(`round${i}`).value.trim();
@@ -1434,14 +1465,14 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                     rounds[`round${i}`] = roundValue;
                 }
             }
-            
+
             if (!registerNo || !studentName || !yearOfGraduation || !companyName || !package || !companyType) {
                 showMessage('Please fill in all required fields.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
                 return;
             }
-            
+
             formData.append('registerNo', registerNo);
             formData.append('studentName', studentName);
             formData.append('phoneNo', phoneNo);
@@ -1453,15 +1484,15 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             formData.append('editMode', document.getElementById('editMode').value);
             formData.append('originalRegisterNo', document.getElementById('originalRegisterNo').value);
             formData.append('originalCompanyName', document.getElementById('originalCompanyName').value);
-            
+
             Object.keys(rounds).forEach(key => {
                 formData.append(key, rounds[key]);
             });
-            
+
             if (newCompanyInput.classList.contains('active')) {
                 formData.append('isNewCompany', 'true');
             }
-            
+
             fetch('submit_experience.php', {
                 method: 'POST',
                 body: formData
@@ -1515,22 +1546,22 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
         function resetForm() {
             const form = document.getElementById('addExperienceForm');
             form.reset();
-            
+
             document.getElementById('editMode').value = 'false';
             document.getElementById('originalRegisterNo').value = '';
             document.getElementById('originalCompanyName').value = '';
             document.getElementById('editModeHeader').style.display = 'none';
             document.getElementById('formTitle').textContent = 'Add Your Placement Experience';
-            
+
             const newCompanyInput = document.getElementById('newCompanyInput');
             newCompanyInput.classList.remove('active');
             document.getElementById('companyName').disabled = false;
-            
+
             const textAreas = ['round1', 'round2', 'round3', 'round4', 'round5', 'round6'];
             textAreas.forEach(roundId => {
                 updateCharacterCount(roundId);
             });
-            
+
             hideMessage();
         }
 
@@ -1557,13 +1588,13 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                 .then(studentData => {
                     if (studentData.success) {
                         const student = studentData.student;
-                        
+
                         document.getElementById('editMode').value = 'true';
                         document.getElementById('originalRegisterNo').value = registerNo;
                         document.getElementById('originalCompanyName').value = companyName;
                         document.getElementById('editModeHeader').style.display = 'block';
                         document.getElementById('formTitle').textContent = 'Edit Your Placement Experience';
-                        
+
                         document.getElementById('registerNo').value = registerNo;
                         document.getElementById('studentName').value = student.name;
                         document.getElementById('phoneNo').value = student.phone_no || '';
@@ -1571,18 +1602,18 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                         document.getElementById('yearOfGraduation').value = student.year_of_graduation;
                         document.getElementById('package').value = parseFloat(experience.package);
                         document.getElementById('companyType').value = experience.company_type || '';
-                        
+
                         if (experience.is_placed) {
                             const placedRadio = document.querySelector(`input[name="is_placed"][value="${experience.is_placed}"]`);
                             if (placedRadio) {
                                 placedRadio.checked = true;
                             }
                         }
-                        
+
                         setTimeout(() => {
                             document.getElementById('companyName').value = companyName;
                         }, 100);
-                        
+
                         const rounds = ['round1', 'round2', 'round3', 'round4', 'round5', 'round6'];
                         rounds.forEach(round => {
                             if (experience[round]) {
@@ -1629,7 +1660,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             currentBatch = batch;
             document.getElementById('companyTableTitle').textContent = `Companies - Batch ${batch}`;
             document.getElementById('companyTableContent').innerHTML = '<div class="loading">Loading companies...</div>';
-            
+
             showCompanyTable();
 
             fetch(`get_companies.php?batch=${batch}`)
@@ -1648,7 +1679,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                                 </thead>
                                 <tbody>
                         `;
-                        
+
                         data.companies.forEach((company, index) => {
                             tableHTML += `
                                 <tr>
@@ -1659,7 +1690,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                                 </tr>
                             `;
                         });
-                        
+
                         tableHTML += '</tbody></table>';
                         document.getElementById('companyTableContent').innerHTML = tableHTML;
                     } else {
@@ -1676,7 +1707,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             currentCompany = companyName;
             document.getElementById('studentTableTitle').textContent = `Students - ${companyName}`;
             document.getElementById('studentTableContent').innerHTML = '<div class="loading">Loading students...</div>';
-            
+
             showStudentTable();
 
             fetch(`get_students.php?batch=${currentBatch}&company=${encodeURIComponent(companyName)}`)
@@ -1698,16 +1729,16 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                                 </thead>
                                 <tbody>
                         `;
-                        
+
                         data.students.forEach((student, index) => {
-                            const actionButtons = canEdit ? 
+                            const actionButtons = canEdit ?
                                 `<td class="action-cell">
                                     <button class="experience-link" style="background: #f39c12; margin-right: 5px;" onclick="editExperience('${student.register_no}', '${currentCompany}')">Edit</button>
                                     <button class="delete-btn" onclick="deleteExperience('${student.register_no}', '${currentCompany}', '${student.name}')"><i class="fas fa-trash"></i> Delete</button>
                                 </td>` : '';
-                            
-                            const placedStatus = student.is_placed === 'Yes' 
-                                ? '<span style="color: green; font-weight: bold;">Yes</span>' 
+
+                            const placedStatus = student.is_placed === 'Yes'
+                                ? '<span style="color: green; font-weight: bold;">Yes</span>'
                                 : '<span style="color: red; font-weight: bold;">No</span>';
 
                             tableHTML += `
@@ -1722,7 +1753,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                                 </tr>
                             `;
                         });
-                        
+
                         tableHTML += '</tbody></table>';
                         document.getElementById('studentTableContent').innerHTML = tableHTML;
                     } else {
@@ -1739,7 +1770,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             document.getElementById('modalStudentName').textContent = studentName;
             document.getElementById('modalCompanyName').textContent = companyName;
             document.getElementById('modalContent').innerHTML = '<div class="loading">Loading experience...</div>';
-            
+
             document.getElementById('experienceModal').style.display = 'block';
 
             fetch(`get_experience.php?register_no=${registerNo}&company=${encodeURIComponent(companyName)}`)
@@ -1748,7 +1779,7 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                     if (data.success && data.experience) {
                         let contentHTML = '';
                         const rounds = ['round1', 'round2', 'round3', 'round4', 'round5', 'round6'];
-                        
+
                         rounds.forEach((round, index) => {
                             if (data.experience[round] && data.experience[round].trim() !== '') {
                                 contentHTML += `
@@ -1762,11 +1793,11 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
                                 `;
                             }
                         });
-                        
+
                         if (contentHTML === '') {
                             contentHTML = '<div class="no-data">No experience details available</div>';
                         }
-                        
+
                         document.getElementById('modalContent').innerHTML = contentHTML;
                     } else {
                         document.getElementById('modalContent').innerHTML = '<div class="no-data">No experience details found</div>';
@@ -1781,8 +1812,8 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
         function deleteExperience(registerNo, companyName, studentName) {
             deleteRegisterNo = registerNo;
             deleteCompanyName = companyName;
-            
-            document.getElementById('confirmMessage').innerHTML = 
+
+            document.getElementById('confirmMessage').innerHTML =
                 `Are you sure you want to delete the placement experience of<br><strong>${studentName}</strong> at <strong>${companyName}</strong>?<br><br>This action cannot be undone.`;
             document.getElementById('confirmModal').style.display = 'block';
         }
@@ -1853,12 +1884,12 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
-            
+
             const confirmModal = document.getElementById('confirmModal');
             if (event.target === confirmModal) {
                 confirmModal.style.display = 'none';
             }
-            
+
             const addExperienceModal = document.getElementById('addExperienceModal');
             if (event.target === addExperienceModal) {
                 closeAddExperienceModal();
@@ -1873,5 +1904,10 @@ $canEdit = in_array($currentUserType, ['admin', 'faculty']);
             }
         });
     </script>
+
+<footer class="creator-footer">
+    <p>Created by <strong>Ashaf M</strong> and <strong>Dharshna G G</strong></p>
+</footer>
+
 </body>
 </html>
