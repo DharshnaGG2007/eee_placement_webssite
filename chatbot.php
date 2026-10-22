@@ -444,15 +444,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         }
 
         .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            max-height: 550px;
-            border: 1px solid #ecf0f1;
-        }
+    flex: 0 1 auto;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    max-height: 550px;
+    border: 1px solid #ecf0f1;
+}
 
         .message {
             margin-bottom: 20px;
@@ -591,7 +591,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
 
         .tab-navigation {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             background: #f8f9fa;
             border-radius: 8px;
             padding: 5px;
@@ -700,6 +700,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
                 width: 100%;
             }
         }
+        
+.creator-footer {
+    margin-top: 5px !important;
+    padding-top: 0 !important;
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
@@ -1019,6 +1026,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
         loadCompanies();
     });
 </script>
+<footer class="creator-footer" style="margin-top: 0; padding-top: 0;">
+    <p style="font-size: 18px; margin: 0;">Created by <strong>Ashaf M</strong> and <strong>Dharshna G G</strong></p>
+</footer>
 
 </body>
 </html>

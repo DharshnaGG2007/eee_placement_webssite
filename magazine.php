@@ -189,7 +189,7 @@ $magazines = [
     </div>
 
 <footer class="creator-footer">
-    <p>Created by <strong>Ashaf M</strong> and <strong>Dharshna G G</strong></p>
+    <p style="font-size: 17px;">Created by <strong>Ashaf M</strong> and <strong>Dharshna G G</strong></p>
 </footer>
 
 </body>
